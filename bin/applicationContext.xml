@@ -38,14 +38,22 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean> -->
 	
-	<!-- 方法二：使用mybatis提供的dao实现类 -->
+	<!-- 方法二：使用mybatis提供的dao实现类
 	<bean id="studentDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="cn.lxx.mapper.StudentMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean> -->
+	
+	<!-- 方法三：批量参数Mapper对象的dao实现类
+		Mapper对应在IOC容器中的ID等于它的类名(首字母小写)	
+	 -->
+	<bean id="mappers" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		<property name="basePackage" value="cn.lxx.mapper"></property>
 	</bean>
 	
 	<bean id="studentService" class="cn.lxx.Service.impl.StudentServiceImpl">
-		<property name="studentDaoImpl" ref="studentDao"></property>
+		<property name="studentDaoImpl" ref="studentMapper"></property>
 	</bean>
 	
 </beans>

@@ -14,7 +14,7 @@ public class Test {
 		Student stu = new Student();
 		stu.setSage("18");
 		stu.setSex("张三");
-		stu.setSname("哈视");
+		stu.setSname("哈123视");
 		studentService.addStudent(stu);
 	}
 
