@@ -33,7 +33,14 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	
+	<!-- 方法一继承SqlSessionDaoSupport类
 	<bean id="studentDao" class="cn.lxx.Dao.impl.StudentDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean> -->
+	
+	<!-- 方法二：使用mybatis提供的dao实现类 -->
+	<bean id="studentDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="cn.lxx.mapper.StudentMapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	
